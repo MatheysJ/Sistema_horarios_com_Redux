@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import horasReducer from '../features/horas/horasSlice';
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
+  reducer: {    
+    horas: horasReducer,
   },
 });
