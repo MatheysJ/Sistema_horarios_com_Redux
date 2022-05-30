@@ -12,6 +12,40 @@
     display: flex;
     flex-direction: column;
     width: 265px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+h4::after{
+    content: '\00a0';
+}
+
+.item-inicio-fim {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.item-inicio {
+    display: flex;
+    align-items: center;
+}
+
+.item-fim {
+    display: flex;
+    align-items: center;
+}
+
+.item-desc {
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+
+.item-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .lista-total-box {

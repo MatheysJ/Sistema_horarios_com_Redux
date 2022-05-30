@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import moment from 'moment'
 
 const initialState = []
 
@@ -10,14 +11,15 @@ export const horasSlice = createSlice({
             reducer(state, action) {
                 state.push(action.payload)
             },
-            prepare({inicio, fim, desc, total}){
+            prepare({inicio, fim, desc, total, totalMins}){
                 return{
                     payload: {
                         inicio,
                         fim,
                         desc,
                         total,
-                        id: nanoid()
+                        id: nanoid(),
+                        totalMins,
                     }
                 }
             }

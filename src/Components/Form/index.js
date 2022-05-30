@@ -24,10 +24,8 @@ function FormHoras() {
     setInicio(e.target.value)
     if (testarData(e.target.value)){
       setInicioValid(true)
-      console.log('Data válida, início definido: ', e.target.value)
     } else {
       setInicioValid(false)
-      console.log('Data inválida')
     }
   }
 
@@ -35,10 +33,9 @@ function FormHoras() {
     setFim(e.target.value)
     if (testarData(e.target.value)){
       setFimValid(true)
-      console.log('Data válida, início definido: ', e.target.value)
     } else {
       setFimValid(false)
-      console.log('Data inválida')
+
     }
   }
   
@@ -51,8 +48,14 @@ function FormHoras() {
     return moment.duration(end.diff(start))._data.hours + ':' + moment.duration(end.diff(start))._data.minutes
   }
 
+  const totalInMinutes = (inicio, fim) => {
+    let start = (moment(inicio, 'HH:mm'))
+    let end = (moment(fim, 'HH:mm'))
+    return (parseInt(moment.duration(end.diff(start))._data.minutes) + parseInt(moment.duration(end.diff(start))._data.hours) * 60)
+  }
+
   const AdicionarHorario = () => {
-    dispatch(addHorario({ inicio, fim, desc, total: calcularTotal(inicio, fim) }))
+    dispatch(addHorario({ inicio, fim, desc, total: calcularTotal(inicio, fim), totalMins: totalInMinutes(inicio, fim) }))
     setInicio('')
     setFim('')
     setDesc('')
