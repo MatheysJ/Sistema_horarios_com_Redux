@@ -1,55 +1,137 @@
 form {
     display: flex;
-    min-width: 60%;
+    width: 100%;
     min-height: 600px;
-    border: 1px solid black;
-    width: auto;
     flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--fundo-secundaria);
+}
+
+.form-box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
 }
 
 .form-box-linha {
+    margin: 15px;
+    padding: 5px 10px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 600px;
+    height: 68px;
+    background-color: var(--fundo-primaria);
+    color: var(--texto-primaria);
 }
 
-input {
+.input-box-desc {
     display: flex;
-    height: 1.2rem;
-    border-radius: 4px;
-    border: 1px solid black;
+    width: 100%;
 }
 
-.input-box {
-    padding: 15px;
-    margin: 0 0 0 10px;
+.button-box {
     display: flex;
-    flex-direction: row;
+    padding: 0 15px;
     justify-content: center;
     align-items: baseline;
+    flex-grow: 2;
 }
 
-.input-box label {
-    padding-right: 5px;
-}
-
-.input-box-desc{
+.button-box button {
     display: flex;
-    margin: 0 0 0 10px;
-    padding: 15px;
+    align-items: center;
 }
 
-.form-button {
-    display: flex;
-    padding: 8px;
+/*  */
+
+
+.form-input-label{
+    font-weight: 300;
+    font-size: 1.5rem;
+    padding: 0 15px 0 15px;
+}
+
+.form-input-horas{
+    padding: 5px;
+    border-radius: 8px;
+    margin: 15px 0 15px 0;
+    font-size: 1.5rem;
+    transition: all 200ms linear;
+    width: 59px;
+}
+
+.form-textarea-label{
+    font-weight: 300;
+    font-size: 1.5rem;
+    padding: 0 15px 0 15px;
+}
+
+.form-textarea {
+    padding: 5px;
+    font-size: 1.5rem;
+    transition: all 200ms linear;
+    resize: none;
+    width: 100%;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+
+
+.form-input-horas:focus {
+    transition: all 200ms linear;
+}
+
+/* Quando o usuário clica no input */
+.form-input-horas:focus::placeholder {
+    transform: translate(-200px, 0px);
+    transition: all 600ms ease-in-out;
+}
+
+/* Quando o usuário para de selecionar o input */
+.form-input-horas:not(:focus)::placeholder{
+    transform: translate(0px, 0px);
+    transition: all 600ms ease-in-out;
+}
+
+.form-button{
+    padding: 20px;
+    margin: 20px 20px 10px 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-style: normal;
     font-family: sans-serif;
-    font-weight: 500;
-    text-transform: uppercase;  
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 2px solid var(--borda-primaria);
+    background-color: transparent;
+    color: var(--borda-primaria);
+    box-shadow: 
+        5px 5px 4px rgba(15, 5, 58, 0.8),
+        6px 6px 8px rgba(20, 5, 54, 0.8)
+    ;
+    transition: all 400ms ease-in-out;
 }
 
-.form-desc-input {
-    width: 400px;
+.form-button:not(:disabled):hover{
+    border: 2px solid rgb(17, 9, 128);
+    background-color: transparent;
+    color: rgb(18, 10, 141);
+    transform: translate(5px, 5px);
+    box-shadow: none;
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
 }
 
-.form-desc-input label {
-    padding-right: 50px;
+.form-button:disabled{
+    border: 2px solid rgb(75, 75, 75);
+    background-color: transparent;
+    color: rgb(75, 75, 75);
+    transform: translate(5px, 5px);
+    box-shadow: none;
+    transition: all 400ms ease-in-out;
 }
