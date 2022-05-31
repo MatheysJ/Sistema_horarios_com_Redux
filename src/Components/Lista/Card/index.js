@@ -6,8 +6,6 @@ function Card({item}) {
 
     const dispatch = useDispatch()
 
-
-
     const cardClicked = () => {
       dispatch(delHorario({
         id: item.id,

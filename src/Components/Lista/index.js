@@ -12,6 +12,7 @@ export default function Lista() {
 
   useEffect(() => {
     getTotal()
+    console.log(list)
   }, [list])
 
   const [totalAcumulado, setTotalAcumulado] = useState('')

@@ -76,6 +76,7 @@ function Inputs() {
                             id="horas-inicio"
                             className="form-input-horas"
                             placeholder="00:00"
+                            autoComplete="off"
                         ></input>
                     </div>
 
@@ -90,6 +91,7 @@ function Inputs() {
                             id="horas-fim"
                             className="form-input-horas"
                             placeholder="00:00"
+                            autoComplete="off"
                         ></input>
                     </div>
 

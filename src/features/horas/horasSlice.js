@@ -1,8 +1,9 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import moment from 'moment'
 
-const initialState = [
-]
+const initialState = {
+    horarios: [],
+}
 
 export const horasSlice = createSlice({
     name: 'horas',
@@ -10,7 +11,7 @@ export const horasSlice = createSlice({
     reducers: {
         addHorario: {
             reducer(state, action) {
-                state.push(action.payload)
+                state.horarios.push(action.payload)
             },
             prepare({inicio, fim, desc, total, totalMins}){
                 return{
@@ -27,15 +28,16 @@ export const horasSlice = createSlice({
         },
         delHorario: {
             reducer(state, action){
-                return{
-                    ...state = state.filter(item => item.id !== action.id)
+                console.log(state.horarios.filter(item => item.id !== action.payload.id))
+                return {
+                    horarios: state.horarios.filter(item => item.id !== action.payload.id)
                 }
             }
         }
     }
 })
 
-export const selectHoras = (state) => state.horas
+export const selectHoras = (state) => state.horas.horarios
 
 export const { addHorario, delHorario } = horasSlice.actions
 
