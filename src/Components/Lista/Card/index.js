@@ -1,15 +1,30 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { delHorario } from '../../../features/horas/horasSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { clickedWithTool, delHorario } from '../../../features/horas/horasSlice';
+import { selectToolBar } from '../../../features/toolBar/toolBarSlice';
 
 function Card({item}) {
 
     const dispatch = useDispatch()
+    const estadoTool = useSelector(selectToolBar)
 
     const cardClicked = () => {
-      dispatch(delHorario({
-        id: item.id,
-      }))
+
+      dispatch(clickedWithTool(estadoTool, {id: item.id}))
+      console.log('cardClicked')
+
+      /* switch (estadoTool) {
+        case 'delete':
+          dispatch(delHorario({
+            id: item.id,
+          }))   
+          break;
+        case 'edit':
+
+          break;
+        default:
+          break;
+      }       */
     }
   
     return(

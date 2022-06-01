@@ -1,7 +1,9 @@
 form {
     display: flex;
     width: 100%;
-    min-height: 647px;
+    min-height: calc(100vh - 50px); /* 647px */
+    /* 100vh = screen height size, 50px é igual ao tamanho do header, assim fica ocupando a tela toda sem sobra, funcionando em 
+    monitores com tamanhos diferentes responsivamente :D. */
     flex-direction: column;
     align-items: flex-start;
     background-color: var(--fundo-secundaria);
