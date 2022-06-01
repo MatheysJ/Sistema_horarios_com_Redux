@@ -12,19 +12,6 @@ function Card({item}) {
 
       dispatch(clickedWithTool(estadoTool, {id: item.id}))
       console.log('cardClicked')
-
-      /* switch (estadoTool) {
-        case 'delete':
-          dispatch(delHorario({
-            id: item.id,
-          }))   
-          break;
-        case 'edit':
-
-          break;
-        default:
-          break;
-      }       */
     }
   
     return(
