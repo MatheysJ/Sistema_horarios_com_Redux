@@ -1,9 +1,10 @@
 .lista-box {
-    width: 30%;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-self: baseline;
+    min-width: 355px;
 }
 
 .lista-item {
@@ -65,7 +66,9 @@ h4::after{
     display: flex;
     margin-top: auto;
     align-self: center;
-    width: 306px;
+    width: 100%;
+    margin-left: 35px;
+
 }
 
 .lista-total {

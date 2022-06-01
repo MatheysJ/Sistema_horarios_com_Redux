@@ -27,9 +27,13 @@ function Card({item}) {
 
           </div>
 
-          <div className='item-desc'>
-            <h4>Descrição: </h4> <p>{item.desc}</p>
-          </div>
+            {
+            item.desc 
+            ? 
+            <div className='item-desc'><h4>Descrição: </h4> <p>{item.desc}</p></div>
+            : 
+            <></>
+            }
 
           <div className='item-total'>
             <h4>Tempo total: </h4><p>{item.total}</p>
