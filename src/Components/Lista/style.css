@@ -5,6 +5,16 @@
     align-items: center;
     justify-self: baseline;
     min-width: 355px;
+    height: calc(100vh - 50px);
+}
+
+.lista-horarios-box {
+    height: calc(100vh - 50px - 46px);
+    overflow: scroll;
+}
+
+.lista-horarios-box::-webkit-scrollbar {
+    display: none;
 }
 
 .lista-item {

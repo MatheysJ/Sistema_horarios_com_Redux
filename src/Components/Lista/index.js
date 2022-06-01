@@ -46,7 +46,9 @@ export default function Lista() {
 
   return (
     <div className='lista-box'>
-      <HorariosListados />
+      <div className='lista-horarios-box'>
+        <HorariosListados />
+      </div>
       <div className='lista-total-box'>
         <h3 className='lista-total'>Total: {totalAcumulado}</h3>
       </div>
