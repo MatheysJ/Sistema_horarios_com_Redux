@@ -47,46 +47,35 @@ export const horasSlice = createSlice({
         },
         delHorario: {
             reducer(state, action){
-                console.log(state.horarios.filter(item => item.id !== action.payload.id))
                 return {
                     horarios: state.horarios.filter(item => item.id !== action.payload.id)
                 }
             }
         },
         editHorario: {
-            reducer(state, action){
-                console.log('Edit horário foi chamado')
+            reducer(state, action){                
             }
         },
         forwardDia: {
-            reducer(state, action){
-                console.log('Forward dia chamado')
+            reducer(state, action){                
             }
         },
         backDia: {
-            reducer(state, action) {
-                console.log('Back dia chamado')
+            reducer(state, action) {                
             }
         }
     }
 })
 
-export const clickedWithTool = (estado, id) => (dispatch) => {
-    console.log('Função chamada e executada')
-    console.log(estado)
-    if (estado == 'idle') {
-        console.log('Estado igual a idle, nada deve acontecer')
-    } else if (estado == 'delete') {
-        console.log('Estado igual a delete:')
+export const clickedWithTool = (estado, id) => (dispatch) => {    
+    if (estado == 'idle') {        
+    } else if (estado == 'delete') {        
         dispatch(delHorario(id))
-    } else if (estado == 'edit') {
-        console.log('Estado igual a edit:')
+    } else if (estado == 'edit') {        
         dispatch(editHorario(id))
-    } else if (estado == 'forward') {
-        console.log('Estado igual a forward:')
+    } else if (estado == 'forward') {        
         dispatch(forwardDia())
-    } else if (estado == 'back') {
-        console.log('Estado igual a back:')
+    } else if (estado == 'back') {        
         dispatch(backDia())
     }
 }

@@ -10,7 +10,6 @@ export const toolBarSlice = createSlice({
     reducers: {
         mudarEstado: {
             reducer(state, action) {
-                console.log(action.payload)
                 return {...state, estado: action.payload}
             }
         }

@@ -11,7 +11,6 @@ function Card({item}) {
     const cardClicked = () => {
 
       dispatch(clickedWithTool(estadoTool, {id: item.id}))
-      console.log('cardClicked')
     }
   
     return(

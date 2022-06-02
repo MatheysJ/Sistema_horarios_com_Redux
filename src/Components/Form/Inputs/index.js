@@ -27,7 +27,6 @@ function Inputs() {
     const calcularTotal = (inicio, fim) => {
         let start = moment(inicio, "HH:mm")
         let end = moment(fim, "HH:mm")
-        console.log(moment.duration(end.diff(start)));
         return (
             moment.duration(end.diff(start))._data.hours 
             + ":" +
