@@ -18,53 +18,53 @@ function ToolBar() {
 
   const Deletar = () => {
     if (!deletar) {
-      dispatch(mudarEstado('delete')) 
+      dispatch(mudarEstado({estado: 'delete'})) 
       setDeletar(true) 
       setEditar(false) 
       setAvancar(false)
       setVoltar(false)
     }
     else {
-      dispatch(mudarEstado('idle')) &&
+      dispatch(mudarEstado({estado: 'idle'})) &&
       setDeletar(false)
     }
   }
   const Editar = () => {
     if (!editar) {
-      dispatch(mudarEstado('edit')) 
+      dispatch(mudarEstado({estado: 'edit'})) 
       setDeletar(false)
       setEditar(true)
       setAvancar(false)
       setVoltar(false)
     } 
     else {
-      dispatch(mudarEstado('idle')) 
+      dispatch(mudarEstado({estado: 'idle'})) 
       setEditar(false)
     }
   }
   const Avancar = () => {
     if (!avancar) {
-      dispatch(mudarEstado('forward')) 
+      dispatch(mudarEstado({estado: 'forward'})) 
       setDeletar(false) 
       setEditar(false) 
       setAvancar(true) 
       setVoltar(false)
     }
     else {        
-      dispatch(mudarEstado('idle')) 
+      dispatch(mudarEstado({estado: 'idle'})) 
       setAvancar(false)
     }
   }
   const Retroceder = () => {
     if (!voltar) {
-      dispatch(mudarEstado('back')) 
+      dispatch(mudarEstado({estado: 'back'})) 
       setDeletar(false) 
       setEditar(false) 
       setAvancar(false) 
        setVoltar(true)
     }
     else {
-      dispatch(mudarEstado('idle')) 
+      dispatch(mudarEstado({estado: 'idle'})) 
       setVoltar(false)
     }
   }

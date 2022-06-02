@@ -21,7 +21,7 @@
     background-color: var(--fundo-primaria);
     color: var(--texto-primaria);
     border-radius: 8px;
-    border-left: rgb(136, 136, 136) 10px solid;
+    border-left: gray 10px solid;
     display: flex;
     flex-direction: column;
     padding: 0 15px;
@@ -29,10 +29,13 @@
     width: 265px;
     font-size: 1.2rem;
     font-weight: 400;
+    transition: 400ms linear;
 }
 
 .lista-item:hover {
     cursor: pointer;
+    border-left: var(--border-color) 10px solid;
+    transition: 400ms ease-in-out;
 }
 
 h4::after{

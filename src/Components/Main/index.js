@@ -11,7 +11,7 @@ function Main(){
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(mudarEstado('idle'))
+        dispatch(mudarEstado({estado: 'idle'}))
     })
 
     return(

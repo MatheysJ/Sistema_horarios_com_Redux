@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clickedWithTool, delHorario } from '../../../features/horas/horasSlice';
 import { selectToolBar } from '../../../features/toolBar/toolBarSlice';
+import { selectToolBarColor } from '../../../features/toolBar/toolBarSlice';
 
 function Card({item}) {
 
     const dispatch = useDispatch()
     const estadoTool = useSelector(selectToolBar)
+    const borderColor = useSelector(selectToolBarColor)
 
     const cardClicked = () => {
-
       dispatch(clickedWithTool(estadoTool, {id: item.id}))
     }
-  
+
+    /* style={{"border-left": `${borderColor} 10px solid`}} --> Funciona */
+
+    /* color: borderColor --> Funciona */
+
+
+
     return(
-        <div className="lista-item" onClick={() => cardClicked()}>
+        <div className="lista-item" style={{"--border-color": borderColor}} onClick={() => cardClicked()}>
           
           <div className='item-inicio-fim'>
             
