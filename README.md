@@ -1,4 +1,4 @@
-<h1>Atualmente em desenvolvimento</h1>
+<h1>Horas com Redux</h1>
 <p>Site desenvolvido com React Js </p>
 <p>Utilizando:</p>
 <ul>
