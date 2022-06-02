@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectHoras } from '../../features/horas/horasSlice'
 import Card from './Card'
+import { getTotal } from '../../common'
 
 
 export default function Lista() {
@@ -11,27 +12,10 @@ export default function Lista() {
   const list = useSelector(selectHoras)
 
   useEffect(() => {
-    getTotal()
+    getTotal(setTotalAcumulado, list)
   }, [list])
 
   const [totalAcumulado, setTotalAcumulado] = useState('')
-
-  const getTotal = () => {
-
-    let horas = Math.floor(list.reduce((totalMins, list) => totalMins + list.totalMins, 0) / 60)
-    let mins = (list.reduce((totalMins, list) => totalMins + list.totalMins, 0) % 60)
-
-    let total = (horas + ':' + mins)
-
-    {
-      horas || mins
-        ?
-        setTotalAcumulado(total)
-        :
-        setTotalAcumulado(0)
-    }
-
-  }
 
   const HorariosListados = () => {
     return (

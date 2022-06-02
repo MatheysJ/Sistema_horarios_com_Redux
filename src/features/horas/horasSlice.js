@@ -1,27 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import moment from 'moment'
-import { useSelector } from "react-redux";
-import { selectToolBar } from "../toolBar/toolBarSlice";
 
 const initialState = {
-    horarios: [
-        {
-            inicio: '09:39',
-            fim: '11:11',
-            desc: 'Teste',
-            total: '1:32',
-            id: '-LY-miP_YA9L03_5shZoC',
-            totalMins: 92
-        },
-        {
-            inicio: '03:17',
-            fim: '11:17',
-            desc: 'Teste2',
-            total: '8:00',
-            id: 'abacaxi',
-            totalMins: 480
-          }
-    ],
+    horarios: [],
 }
 
 export const horasSlice = createSlice({

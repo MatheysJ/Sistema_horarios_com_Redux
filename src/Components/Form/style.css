@@ -109,24 +109,33 @@ form {
     font-family: sans-serif;
     font-size: 1.2rem;
     border-radius: 10px;
-    border: 2px solid var(--borda-primaria);
+    border: 2px solid rgb(46, 46, 46);
     background-color: transparent;
-    color: var(--borda-primaria);
+    color: rgb(0, 0, 0);
     box-shadow: 
-        5px 5px 4px rgba(15, 5, 58, 0.8),
-        6px 6px 8px rgba(20, 5, 54, 0.8)
+        6px 6px 0px rgb(46, 46, 46),
+        5px 5px 0px rgb(46, 46, 46),
+        4px 4px 0px rgb(46, 46, 46),
+        3px 3px 0px rgb(46, 46, 46),
+        2px 2px 0px rgb(46, 46, 46),
+        1px 1px 0px rgb(46, 46, 46)
     ;
     transition: all 400ms ease-in-out;
 }
 
 .form-button:not(:disabled):hover{
-    border: 2px solid rgb(17, 9, 128);
+    border: 2px solid rgb(0, 0, 0);
     background-color: transparent;
-    color: rgb(18, 10, 141);
+    color: rgb(0, 0, 0);
     transform: translate(5px, 5px);
     box-shadow: none;
     transition: all 400ms ease-in-out;
     cursor: pointer;
+}
+
+.form-button:not(:disabled):active {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: all 400ms ease-in-out;
 }
 
 .form-button:disabled{
@@ -136,4 +145,28 @@ form {
     transform: translate(5px, 5px);
     box-shadow: none;
     transition: all 400ms ease-in-out;
+}
+
+/* Divisoria */
+
+.form-divisoria {
+    height: 2px;
+    width: 91%;
+    background-color: var(--fundo-primaria);
+    margin: 15px 0px 15px 15px;
+    border-radius: 1px;
+}
+
+/* Dados */
+
+.form-dados {
+    margin: 0px 0px 0px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.form-dados h2 {
+    font-family: sans-serif;
+    font-weight: 300;
 }
