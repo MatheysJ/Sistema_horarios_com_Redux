@@ -7,11 +7,18 @@ import { selectToolBarColor } from '../../../features/toolBar/toolBarSlice';
 function Card({item}) {
 
     const dispatch = useDispatch()
-    const estadoTool = useSelector(selectToolBar)
+    const ferramentaTool = useSelector(selectToolBar)
     const borderColor = useSelector(selectToolBarColor)
 
     const cardClicked = () => {
-      dispatch(clickedWithTool(estadoTool, {id: item.id}))
+      dispatch(clickedWithTool(ferramentaTool, {
+        inicio: item.inicio, 
+        fim: item.fim, 
+        desc: item.desc, 
+        total: item.total, 
+        id: item.id, 
+        totalMins: item.totalMins
+      }))
     }
 
     /* style={{"border-left": `${borderColor} 10px solid`}} --> Funciona */

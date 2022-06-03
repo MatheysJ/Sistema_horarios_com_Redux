@@ -1,8 +1,9 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
     horarios: [],
-    horasDia: '04:00'
+    horasDia: '04:00',
+    editando: {}
 }
 
 export const horasSlice = createSlice({
@@ -40,7 +41,11 @@ export const horasSlice = createSlice({
             }
         },
         editHorario: {
-            reducer(state, action){                
+            reducer(state, action){                         
+                return {
+                    ...state,
+                    editando: action.payload
+                }
             }
         },
         forwardDia: {
@@ -59,24 +64,31 @@ export const horasSlice = createSlice({
                     minsDia: minsDia(action.payload)
                 }
             }
-        }
+        },
     }
 })
+
+/* const editarHorarios = createAsyncThunk(
+    'horas/editarHorarios',
+    async (action) => {
+        
+    }
+) */
 
 export function minsDia(tempo) {
     let tempoArray = tempo.split(':')
     return Number(tempoArray[0]) * 60 + Number(tempoArray[1])
 }
 
-export const clickedWithTool = (estado, id) => (dispatch) => {    
-    if (estado == 'idle') {        
-    } else if (estado == 'delete') {        
+export const clickedWithTool = (ferramenta, id) => (dispatch) => {    
+    if (ferramenta === 'idle') {        
+    } else if (ferramenta === 'delete') {        
         dispatch(delHorario(id))
-    } else if (estado == 'edit') {        
+    } else if (ferramenta === 'edit') {        
         dispatch(editHorario(id))
-    } else if (estado == 'forward') {        
+    } else if (ferramenta === 'forward') {        
         dispatch(forwardDia())
-    } else if (estado == 'back') {        
+    } else if (ferramenta === 'back') {        
         dispatch(backDia())
     }
 }

@@ -5,7 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useDispatch } from 'react-redux';
-import { mudarEstado } from '../../features/toolBar/toolBarSlice';
+import { mudarFerramenta } from '../../features/toolBar/toolBarSlice';
 
 function ToolBar() {
 
@@ -18,53 +18,53 @@ function ToolBar() {
 
   const Deletar = () => {
     if (!deletar) {
-      dispatch(mudarEstado({estado: 'delete'})) 
+      dispatch(mudarFerramenta({ferramenta: 'delete'})) 
       setDeletar(true) 
       setEditar(false) 
       setAvancar(false)
       setVoltar(false)
     }
     else {
-      dispatch(mudarEstado({estado: 'idle'})) &&
+      dispatch(mudarFerramenta({ferramenta: 'idle'})) &&
       setDeletar(false)
     }
   }
   const Editar = () => {
     if (!editar) {
-      dispatch(mudarEstado({estado: 'edit'})) 
+      dispatch(mudarFerramenta({ferramenta: 'edit'})) 
       setDeletar(false)
       setEditar(true)
       setAvancar(false)
       setVoltar(false)
     } 
     else {
-      dispatch(mudarEstado({estado: 'idle'})) 
+      dispatch(mudarFerramenta({ferramenta: 'idle'})) 
       setEditar(false)
     }
   }
   const Avancar = () => {
     if (!avancar) {
-      dispatch(mudarEstado({estado: 'forward'})) 
+      dispatch(mudarFerramenta({ferramenta: 'forward'})) 
       setDeletar(false) 
       setEditar(false) 
       setAvancar(true) 
       setVoltar(false)
     }
     else {        
-      dispatch(mudarEstado({estado: 'idle'})) 
+      dispatch(mudarFerramenta({ferramenta: 'idle'})) 
       setAvancar(false)
     }
   }
   const Retroceder = () => {
     if (!voltar) {
-      dispatch(mudarEstado({estado: 'back'})) 
+      dispatch(mudarFerramenta({ferramenta: 'back'})) 
       setDeletar(false) 
       setEditar(false) 
       setAvancar(false) 
        setVoltar(true)
     }
     else {
-      dispatch(mudarEstado({estado: 'idle'})) 
+      dispatch(mudarFerramenta({ferramenta: 'idle'})) 
       setVoltar(false)
     }
   }

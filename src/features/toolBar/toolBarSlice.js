@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    estado: 'idle', // idle || delete ||  edit  || forward || back
+    ferramenta: 'idle', // idle || delete ||  edit  || forward || back
     color: 'gray',  // gray ||   red  || yellow ||   gray  || gray
 }
 
@@ -9,28 +9,28 @@ export const toolBarSlice = createSlice({
     name: 'toolbar', //NÃO PODE TER LETRA MAIÚSCULA
     initialState,
     reducers: {
-        mudarEstado: {
+        mudarFerramenta: {
             reducer(state, action) {
-                return {...state, estado: action.payload.estado, color: estadoColor(action.payload.estado)}
+                return {...state, ferramenta: action.payload.ferramenta, color: ferramentaColor(action.payload.ferramenta)}
             }
         }
     }
 })
 
-export const estadoColor = (estado) => {
-    if (estado === 'idle'){
+export const ferramentaColor = (ferramenta) => {
+    if (ferramenta === 'idle'){
         return 'rgb(110, 110, 110)'
-    } else if (estado === 'delete') {
+    } else if (ferramenta === 'delete') {
         return 'rgb(177, 57, 57)'
-    } else if (estado === 'edit') {
+    } else if (ferramenta === 'edit') {
         return 'rgb(230, 200, 32)'
     }
     return 'rgb(110, 110, 110)'
 }
 
-export const selectToolBar = (state) => state.toolbar.estado
+export const selectToolBar = (state) => state.toolbar.ferramenta
 export const selectToolBarColor = (state) => state.toolbar.color
 
-export const { mudarEstado } = toolBarSlice.actions
+export const { mudarFerramenta } = toolBarSlice.actions
 
 export default toolBarSlice.reducer

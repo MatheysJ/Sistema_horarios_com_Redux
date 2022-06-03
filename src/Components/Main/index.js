@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { mudarEstado } from '../../features/toolBar/toolBarSlice'
+import { mudarFerramenta } from '../../features/toolBar/toolBarSlice'
 import FormHoras from '../Form'
 import Lista from '../Lista'
 import ToolBar from '../ToolBar'
@@ -11,7 +11,7 @@ function Main(){
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(mudarEstado({estado: 'idle'}))
+        dispatch(mudarFerramenta({ferramenta: 'idle'}))
     })
 
     return(

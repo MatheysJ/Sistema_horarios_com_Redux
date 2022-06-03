@@ -31,6 +31,7 @@ function Inputs() {
         ValidHoras(e) && dispatch(changeMaxHoras(horasMax))
     }
 
+    //Refatorar depois
     const calcularTotal = (inicio, fim) => {
         let start = moment(inicio, "HH:mm")
         let end = moment(fim, "HH:mm")
@@ -41,6 +42,7 @@ function Inputs() {
         );
     };
 
+    //Refatorar depois
     const totalInMinutes = (inicio, fim) => {
         let start = moment(inicio, "HH:mm");
         let end = moment(fim, "HH:mm");
@@ -50,7 +52,7 @@ function Inputs() {
         );
     };
 
-    const AdicionarHorario = () => {
+    const adicionarHorario = () => {
         dispatch(
             addHorario({
                 inicio,
@@ -64,7 +66,14 @@ function Inputs() {
         setFim("");
         setDesc("");
     };
-
+/* 
+    const editarHorario = (inicio, fim, desc) => {
+        setInicio(inicio)
+        setFim(fim)
+        setDesc(desc)
+        //Criar um estado para mudar o botão de submit, mudar o ADICIONAR para EDITAR
+    }
+ */
     return (
         <div className="form-box">
             <div>
@@ -124,7 +133,7 @@ function Inputs() {
                 <div className="button-box">
                     <button
                         disabled={!((fimValid && inicioValid) && (inicio && fim))}
-                        onClick={AdicionarHorario}
+                        onClick={adicionarHorario}
                         className="form-button"
                     >
                         Adicionar
