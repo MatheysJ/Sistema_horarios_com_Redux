@@ -16,6 +16,15 @@ form {
     width: 100%;
 }
 
+.form-box-button-horas {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
 .form-box-linha {
     margin: 15px;
     padding: 5px 10px;
@@ -40,7 +49,6 @@ form {
     padding: 0 15px;
     justify-content: center;
     align-items: baseline;
-    flex-grow: 2;
 }
 
 .button-box button {
@@ -146,6 +154,21 @@ form {
     box-shadow: none;
     transition: all 400ms ease-in-out;
 }
+
+/* Input de horas a cumprir no dia */
+
+.box-horas-dia {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.box-horas-dia input {
+    margin: 8px 0 8px 0;
+}
+
 
 /* Divisoria */
 

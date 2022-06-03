@@ -21,7 +21,7 @@
     background-color: var(--fundo-primaria);
     color: var(--texto-primaria);
     border-radius: 8px;
-    border-left: gray 10px solid;
+    border-left: rgb(110, 110, 110) 10px solid;
     display: flex;
     flex-direction: column;
     padding: 0 15px;

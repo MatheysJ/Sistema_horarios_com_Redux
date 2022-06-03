@@ -18,14 +18,14 @@ export const toolBarSlice = createSlice({
 })
 
 export const estadoColor = (estado) => {
-    if (estado == 'idle'){
-        return 'gray'
-    } else if (estado == 'delete') {
-        return 'red'
-    } else if (estado == 'edit') {
-        return 'yellow'
+    if (estado === 'idle'){
+        return 'rgb(110, 110, 110)'
+    } else if (estado === 'delete') {
+        return 'rgb(177, 57, 57)'
+    } else if (estado === 'edit') {
+        return 'rgb(230, 200, 32)'
     }
-    return 'gray'
+    return 'rgb(110, 110, 110)'
 }
 
 export const selectToolBar = (state) => state.toolbar.estado

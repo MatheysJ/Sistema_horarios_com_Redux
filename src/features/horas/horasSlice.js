@@ -2,6 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
     horarios: [],
+    horasDia: '04:00'
 }
 
 export const horasSlice = createSlice({
@@ -10,7 +11,12 @@ export const horasSlice = createSlice({
     reducers: {
         addHorario: {
             reducer(state, action) {
-                state.horarios.push(action.payload)
+                if (state.horarios){
+                    state.horarios.push(action.payload)
+                }
+                else {
+                    state.horarios[0] = action.payload
+                }
             },
             prepare({inicio, fim, desc, total, totalMins}){
                 return{
@@ -28,6 +34,7 @@ export const horasSlice = createSlice({
         delHorario: {
             reducer(state, action){
                 return {
+                    ...state,
                     horarios: state.horarios.filter(item => item.id !== action.payload.id)
                 }
             }
@@ -43,9 +50,23 @@ export const horasSlice = createSlice({
         backDia: {
             reducer(state, action) {                
             }
+        },
+        changeMaxHoras: {
+            reducer(state, action) {
+                return {
+                    ...state,
+                    horasDia: action.payload,
+                    minsDia: minsDia(action.payload)
+                }
+            }
         }
     }
 })
+
+export function minsDia(tempo) {
+    let tempoArray = tempo.split(':')
+    return Number(tempoArray[0]) * 60 + Number(tempoArray[1])
+}
 
 export const clickedWithTool = (estado, id) => (dispatch) => {    
     if (estado == 'idle') {        
@@ -61,7 +82,9 @@ export const clickedWithTool = (estado, id) => (dispatch) => {
 }
 
 export const selectHoras = (state) => state.horas.horarios
+export const selectMaxHoras = (state) => state.horas.horasDia
+export const selectMaxMins = (state) => state.horas.minsDia
 
-export const { addHorario, delHorario, editHorario, forwardDia, backDia } = horasSlice.actions
+export const { addHorario, delHorario, editHorario, forwardDia, backDia, changeMaxHoras } = horasSlice.actions
 
 export default horasSlice.reducer

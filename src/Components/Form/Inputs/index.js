@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addHorario } from "../../../features/horas/horasSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addHorario, changeMaxHoras, selectMaxHoras } from "../../../features/horas/horasSlice";
 import moment from "moment";
 import { ValidHoras } from "../../../common";
 
 function Inputs() {
 
     const dispatch = useDispatch();
+    const horasDia = useSelector(selectMaxHoras)
 
     const [inicio, setInicio] = useState("");
     const [fim, setFim] = useState("");
     const [desc, setDesc] = useState("");
 
+    const [horasMax, setHorasMax] = useState("");
+    
     const [inicioValid, setInicioValid] = useState(false);
     const [fimValid, setFimValid] = useState(false);
 
@@ -22,6 +25,10 @@ function Inputs() {
     const fimChanged = (e) => {
         setFim(e.target.value)
         setFimValid(ValidHoras(e))
+    }
+
+    const mudarHorasDiarias = (e) => {
+        ValidHoras(e) && dispatch(changeMaxHoras(horasMax))
     }
 
     const calcularTotal = (inicio, fim) => {
@@ -113,16 +120,30 @@ function Inputs() {
                 
             </div>
 
-            
-            <div className="button-box">
-                <button
-                    disabled={!((fimValid && inicioValid) && (inicio && fim))}
-                    onClick={AdicionarHorario}
-                    className="form-button"
-                >
-                    Adicionar
-                </button>
+            <div className="form-box-button-horas">
+                <div className="button-box">
+                    <button
+                        disabled={!((fimValid && inicioValid) && (inicio && fim))}
+                        onClick={AdicionarHorario}
+                        className="form-button"
+                    >
+                        Adicionar
+                    </button>
+                </div>
+
+                <div className="box-horas-dia">
+                    <label className="form-input-label">Horas no dia</label>
+                    <input
+                        className="form-input-horas"
+                        placeholder={horasDia}
+                        value={horasMax}
+                        onChange={(e) => setHorasMax(e.target.value)}
+                        onBlur={(e) => mudarHorasDiarias(e)}
+                    ></input>
+                </div>
+
             </div>
+
             
         </div>
     );

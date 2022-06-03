@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectHoras } from '../../../features/horas/horasSlice'
+import { selectHoras, selectMaxHoras, selectMaxMins } from '../../../features/horas/horasSlice'
 import { getTotal } from './../../../common'
 
 function Dados() {
 
     const list = useSelector(selectHoras)
+    const minsDia = useSelector(selectMaxMins)
 
     const [totalMins, setTotalMins] = useState('')
 
     useEffect(() => {
-        getTotal(setTotalMins, list)
-    }, [list])
+        list && getTotal(setTotalMins, list)
+    }, [list, minsDia])
 
     function getTempoRestante() {
-        //Tá sendo chamado muitas vezes, preciso arrumar um jeito de otimizar ainda
-        //memorize?    
         if (totalMins){
 
             let tempoRestante = totalMins.split(':')
@@ -23,7 +22,7 @@ function Dados() {
             tempoRestante[1] = Number(tempoRestante[1])
 
             let totalDeMins = (tempoRestante[0] * 60) + tempoRestante[1]
-            let restanteMins = 240 - totalDeMins
+            let restanteMins = minsDia - totalDeMins
 
             tempoRestante[0] = Math.floor(restanteMins / 60)
             tempoRestante[1] = restanteMins % 60
@@ -32,6 +31,8 @@ function Dados() {
         } 
         return undefined
     }
+
+
 
     return (
         <div className='form-dados'>

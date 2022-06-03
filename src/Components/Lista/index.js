@@ -12,19 +12,24 @@ export default function Lista() {
   const list = useSelector(selectHoras)
 
   useEffect(() => {
-    getTotal(setTotalAcumulado, list)
+    list && getTotal(setTotalAcumulado, list)
   }, [list])
 
   const [totalAcumulado, setTotalAcumulado] = useState('')
 
   const HorariosListados = () => {
-    return (
-      list.map(item => (
-        <div key={item.id}>
-          <Card item={item}/>
-        </div>
-      ))
-    )
+    if (list){
+      return (
+        list.map(item => (
+          <div key={item.id}>
+            <Card item={item}/>
+          </div>
+        ))
+      )
+    }
+    else {
+      <></>
+    }
   }
 
   return (
