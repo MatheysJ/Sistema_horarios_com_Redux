@@ -25,8 +25,8 @@ function Dados() {
             let restanteMins = minsDia - totalDeMins
 
             tempoRestante[0] = Math.floor(restanteMins / 60)
-            tempoRestante[1] = restanteMins % 60
-    
+            tempoRestante[1] = restanteMins % 60            
+
             return tempoRestante
         } 
         return undefined
@@ -36,7 +36,9 @@ function Dados() {
 
     return (
         <div className='form-dados'>
-            <h2>{ totalMins ? `Faltam ${getTempoRestante()[0]} horas e ${getTempoRestante()[1]} minutos` : ''}</h2>
+            {
+            totalMins && <h2>{`Faltam ${getTempoRestante()[0]} horas e ${getTempoRestante()[1]} minutos`}</h2>
+            }
         </div>
     )
 }
