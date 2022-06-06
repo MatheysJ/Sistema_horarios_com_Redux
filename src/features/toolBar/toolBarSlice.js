@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     ferramenta: 'idle', // idle || delete ||  edit  || forward || back
     color: 'gray',  // gray ||   red  || yellow ||   gray  || gray
-    estado: 'idle'
 }
 
 export const toolBarSlice = createSlice({
@@ -31,7 +30,6 @@ export const ferramentaColor = (ferramenta) => {
 
 export const selectToolBar = (state) => state.toolbar.ferramenta
 export const selectToolBarColor = (state) => state.toolbar.color
-export const selectToolBarEstado = (state) => state.toolbar.estado
 
 export const { mudarFerramenta } = toolBarSlice.actions
 

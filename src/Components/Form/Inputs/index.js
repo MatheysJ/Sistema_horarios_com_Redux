@@ -25,7 +25,15 @@ function Inputs() {
 
     const editCampos = () => {
 
+        console.log(horarios)
+
         let i = horarios.findIndex(item => item.id === itemEditando.id)
+
+        console.log(itemEditando)
+
+        console.log("index: ", i)
+
+        console.log(horarios[i].inicio)
 
         setInicio(horarios[i].inicio)
         setInicioValid(true)

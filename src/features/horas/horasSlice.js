@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    horarios: [],
-    horasDia: '04:00',
-    editando: {}
+    dias: {
+        horarios: [],
+        horasDia: '04:00',
+        minsDia: 240,
+    },
+    estado: 'idle',
 }
 
 export const horasSlice = createSlice({
@@ -12,11 +15,11 @@ export const horasSlice = createSlice({
     reducers: {
         addHorario: {
             reducer(state, action) {
-                if (state.horarios){
-                    state.horarios.push(action.payload)
+                if (state.dias.horarios){
+                    state.dias.horarios.push(action.payload)
                 }
                 else {
-                    state.horarios[0] = action.payload
+                    state.dias.horarios[0] = action.payload
                 }
             },
             prepare({inicio, fim, desc, total, totalMins}){
@@ -34,10 +37,7 @@ export const horasSlice = createSlice({
         },
         delHorario: {
             reducer(state, action){
-                return {
-                    ...state,
-                    horarios: state.horarios.filter(item => item.id !== action.payload.id)
-                }
+                    state.dias.horarios = state.dias.horarios.filter(item => item.id !== action.payload.id)
             }
         },
         getEditItem: {
@@ -50,7 +50,7 @@ export const horasSlice = createSlice({
         },
         editHorario: {
             reducer(state, action) {
-                state.horarios[action.payload.index] = action.payload
+                state.dias.horarios[action.payload.index] = action.payload
             },
             prepare({inicio, fim, desc, total, totalMins}, index){
                 return{
@@ -110,9 +110,9 @@ export const clickedWithTool = (ferramenta, id) => (dispatch) => {
     }
 }
 
-export const selectHoras = (state) => state.horas.horarios
-export const selectMaxHoras = (state) => state.horas.horasDia
-export const selectMaxMins = (state) => state.horas.minsDia
+export const selectHoras = (state) => state.horas.dias.horarios
+export const selectMaxHoras = (state) => state.horas.dias.horasDia
+export const selectMaxMins = (state) => state.horas.dias.minsDia
 export const selectEditandoItem = (state) => state.horas.editando
 export const selectEstado = (state) => state.horas.estado
 
