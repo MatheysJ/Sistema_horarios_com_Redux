@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addHorario, changeMaxHoras, selectMaxHoras } from "../../../features/horas/horasSlice";
+import { addHorario, changeMaxHoras, editHorario, getEditItem, selectEditandoItem, selectHoras, selectMaxHoras, mudarEstado, selectEstado } from "../../../features/horas/horasSlice";
 import moment from "moment";
 import { ValidHoras } from "../../../common";
 
@@ -8,6 +8,32 @@ function Inputs() {
 
     const dispatch = useDispatch();
     const horasDia = useSelector(selectMaxHoras)
+    const horarios = useSelector(selectHoras)
+    const itemEditando = useSelector(selectEditandoItem)
+    const editEstado = useSelector(selectEstado)
+
+    useEffect(() => {
+        dispatch(getEditItem())
+        dispatch(mudarEstado('idle'))
+    }, [])
+
+    useEffect(() => {
+        if (editEstado === 'editando' && itemEditando){
+            editCampos()
+        }
+    }, [editEstado])
+
+    const editCampos = () => {
+
+        let i = horarios.findIndex(item => item.id === itemEditando.id)
+
+        setInicio(horarios[i].inicio)
+        setInicioValid(true)
+        setFim(horarios[i].fim)
+        setFimValid(true)
+        setDesc(horarios[i].desc)
+
+    }
 
     const [inicio, setInicio] = useState("");
     const [fim, setFim] = useState("");
@@ -66,14 +92,33 @@ function Inputs() {
         setFim("");
         setDesc("");
     };
-/* 
-    const editarHorario = (inicio, fim, desc) => {
-        setInicio(inicio)
-        setFim(fim)
-        setDesc(desc)
-        //Criar um estado para mudar o botão de submit, mudar o ADICIONAR para EDITAR
+
+    const editarHorario = () => {
+
+        let editIndex = horarios.findIndex(item => item.id === itemEditando.id)
+
+        dispatch(
+            editHorario(
+                {
+                    inicio, 
+                    fim, 
+                    desc, 
+                    total: calcularTotal(inicio, fim), 
+                    totalMins: totalInMinutes(inicio, fim)
+                },
+                editIndex
+            )
+        )
+
+        setInicio("");
+        setFim("");
+        setDesc("");
+
+        dispatch(getEditItem())
+        dispatch(mudarEstado('idle'))
+
     }
- */
+
     return (
         <div className="form-box">
             <div>
@@ -133,10 +178,16 @@ function Inputs() {
                 <div className="button-box">
                     <button
                         disabled={!((fimValid && inicioValid) && (inicio && fim))}
-                        onClick={adicionarHorario}
+                        onClick={
+                            editEstado === 'editando' 
+                            ?
+                            editarHorario
+                            :
+                            adicionarHorario
+                        }
                         className="form-button"
                     >
-                        Adicionar
+                        {editEstado === 'editando' ? 'Editar' : 'Adicionar'}
                     </button>
                 </div>
 

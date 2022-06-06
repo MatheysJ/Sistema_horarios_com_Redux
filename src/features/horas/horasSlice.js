@@ -40,11 +40,29 @@ export const horasSlice = createSlice({
                 }
             }
         },
-        editHorario: {
+        getEditItem: {
             reducer(state, action){                         
                 return {
                     ...state,
-                    editando: action.payload
+                    editando: action.payload,
+                }
+            }
+        },
+        editHorario: {
+            reducer(state, action) {
+                state.horarios[action.payload.index] = action.payload
+            },
+            prepare({inicio, fim, desc, total, totalMins}, index){
+                return{
+                    payload: {
+                        inicio,
+                        fim,
+                        desc,
+                        total,
+                        id: nanoid(),
+                        totalMins,
+                        index
+                    }
                 }
             }
         },
@@ -65,15 +83,13 @@ export const horasSlice = createSlice({
                 }
             }
         },
+        mudarEstado: {
+            reducer(state, action){
+                return {...state, estado: action.payload}
+            }
+        }
     }
 })
-
-/* const editarHorarios = createAsyncThunk(
-    'horas/editarHorarios',
-    async (action) => {
-        
-    }
-) */
 
 export function minsDia(tempo) {
     let tempoArray = tempo.split(':')
@@ -85,7 +101,8 @@ export const clickedWithTool = (ferramenta, id) => (dispatch) => {
     } else if (ferramenta === 'delete') {        
         dispatch(delHorario(id))
     } else if (ferramenta === 'edit') {        
-        dispatch(editHorario(id))
+        dispatch(getEditItem(id))
+        dispatch(mudarEstado('editando'))
     } else if (ferramenta === 'forward') {        
         dispatch(forwardDia())
     } else if (ferramenta === 'back') {        
@@ -96,7 +113,9 @@ export const clickedWithTool = (ferramenta, id) => (dispatch) => {
 export const selectHoras = (state) => state.horas.horarios
 export const selectMaxHoras = (state) => state.horas.horasDia
 export const selectMaxMins = (state) => state.horas.minsDia
+export const selectEditandoItem = (state) => state.horas.editando
+export const selectEstado = (state) => state.horas.estado
 
-export const { addHorario, delHorario, editHorario, forwardDia, backDia, changeMaxHoras } = horasSlice.actions
+export const { addHorario, delHorario, getEditItem, forwardDia, backDia, changeMaxHoras, editHorario, mudarEstado } = horasSlice.actions
 
 export default horasSlice.reducer
