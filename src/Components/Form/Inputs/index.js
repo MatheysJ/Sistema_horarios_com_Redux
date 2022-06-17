@@ -53,11 +53,13 @@ function Inputs() {
     const [fimValid, setFimValid] = useState(false);
 
     const inicioChanged = (e) => {
-        setInicio(e.target.value)
+        let texto = (e.target.value).toString().replace(/\D/g, "")
+        setInicio(texto.toString().replace(/^(\d{2})(\d)/g,"$1:$2"))
         setInicioValid(ValidHoras(e))
     }
     const fimChanged = (e) => {
-        setFim(e.target.value)
+        let texto = (e.target.value).toString().replace(/\D/g, "")
+        setFim(texto.toString().replace(/^(\d{2})(\d)/g,"$1:$2"))
         setFimValid(ValidHoras(e))
     }
 
@@ -145,6 +147,7 @@ function Inputs() {
                             className="form-input-horas"
                             placeholder="00:00"
                             autoComplete="off"
+                            maxLength={5}
                         ></input>
                     </div>
 
@@ -160,6 +163,7 @@ function Inputs() {
                             className="form-input-horas"
                             placeholder="00:00"
                             autoComplete="off"
+                            maxLength={5}
                         ></input>
                     </div>
 
