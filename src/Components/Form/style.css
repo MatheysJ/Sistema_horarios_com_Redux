@@ -1,7 +1,6 @@
 form {
     display: flex;
     width: 100%;
-    min-height: calc(100vh - 50px); /* 647px */
     /* 100vh = screen height size, 50px é igual ao tamanho do header, assim fica ocupando a tela toda sem sobra, funcionando em 
     monitores com tamanhos diferentes responsivamente :D. */
     flex-direction: column;
@@ -14,6 +13,7 @@ form {
     align-items: flex-start;
     justify-content: center;
     width: 100%;
+    /* background-color: aquamarine; */
 }
 
 .form-box-button-horas {
@@ -22,7 +22,7 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
+    /* background-color: brown; */
 }
 
 .form-box-linha {
@@ -192,4 +192,33 @@ form {
 .form-dados h2 {
     font-family: sans-serif;
     font-weight: 300;
+}
+
+/* Responsividade */
+
+@media only screen and (min-width: 1271px) {
+    form {
+        min-height: calc(100vh - 50px); /* 647px */
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    form {
+        min-height: 0px; 
+    }
+}
+
+@media only screen and (max-width: 855px) {
+    .form-box {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .form-box-linha {
+        width: calc(600px - (650px - 100vw));
+        /* 600px - (tamanho da tela - 650) */
+        height: auto;
+    }
 }

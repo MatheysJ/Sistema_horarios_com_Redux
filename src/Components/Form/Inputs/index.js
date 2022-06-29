@@ -131,7 +131,7 @@ function Inputs() {
 
     return (
         <div className="form-box">
-            <div>
+            <div className="form-box-inputs">
 
                 <div className="form-box-linha">
                     

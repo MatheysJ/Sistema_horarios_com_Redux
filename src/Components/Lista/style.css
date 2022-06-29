@@ -30,6 +30,7 @@
     font-size: 1.2rem;
     font-weight: 400;
     transition: 400ms linear;
+    overflow: hidden;
 }
 
 .lista-item:hover {
@@ -81,10 +82,49 @@ h4::after{
     align-self: center;
     width: 100%;
     margin-left: 35px;
-
 }
 
 .lista-total {
     margin: 10px 15px 10px 15px;
     text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1271px) {
+    .lista-horarios-box {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    .lista-box {
+        height: auto;
+        min-height: 270px;
+        width: 100vw;
+        min-width: 0;
+    }
+    .lista-horarios-box {
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .div-cada-card {
+        height: 260px;
+        display: flex;
+    }
+    .lista-total-box {
+        border-left: 0;
+        border-radius: 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+    .lista-total-box::after {
+        content: 'Horas';
+        font-size: 1.2rem;
+        font-weight: 600;
+        display: none;
+    }
 }

@@ -21,7 +21,7 @@ export default function Lista() {
     if (list){
       return (
         list.map(item => (
-          <div key={item.id}>
+          <div className='div-cada-card' key={item.id}>
             <Card item={item}/>
           </div>
         ))
